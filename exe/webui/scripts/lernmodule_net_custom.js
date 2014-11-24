@@ -6,35 +6,38 @@ titleImages();
 function customMenu()
 {
   var anchors = document.getElementsByTagName ("A");
-  var mspan;
+  var mspan, sign;
   for (var i=0; i<anchors.length; i++)
   {
     css = anchors[i].getAttribute("CLASS");
+    linkTarget = anchors[i].getAttribute("HREF");
     if (css != null)
     {
       if (css.indexOf ("main-node") != -1) continue;
       mspan = document.createElement("span");
       if (css.indexOf ("current-page-parent") != -1)
       {
-	sign = document.createElement("img");
-	sign.setAttribute ("src", "Rminus.gif");
+        sign = document.createElement("img");
+        sign.setAttribute ("src", "Rminus.gif");
       }
       else if (css.indexOf ("daddy") != -1)
       {
-	if (css.indexOf ("active") != -1)
-	{
-	  sign = document.createElement("img");
-	  sign.setAttribute ("src", "Rminus.gif");
-	}
-	else
-	{
-	  sign = document.createElement("img");
-	  sign.setAttribute ("src", "Rplus.gif");
-	}
+        if (css.indexOf ("active") != -1)
+        {
+          sign = document.createElement("img");
+          sign.setAttribute ("src", "Rminus.gif");
+        }
+        else
+        {
+          sign = document.createElement("img");
+          sign.setAttribute ("src", "Rplus.gif");
+        }
       }
       else continue;
-      mspan.appendChild(sign);
       mspan.setAttribute("STYLE", "float:left;");
+      sign.setAttribute("onclick", "location.href='" + linkTarget + "'");
+ //     sign.onclick = function { location.href = linkTarget};
+      mspan.appendChild(sign);
       anchors[i].parentNode.insertBefore (mspan, anchors[i]);
     }
   }
