@@ -23,10 +23,10 @@
 Version Information
 """
 
-project = "eXelearningPlus"
+project = "KIC.InnoEnergy"
 release = "2.0.1"
 revisionIntef = "dd27f4d"
-revisionLernmodule = "2"
+revisionLernmodule = "KIC-1"
 
 revision = revisionIntef+"-"+revisionLernmodule
 version = release
