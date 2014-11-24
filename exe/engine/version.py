@@ -26,7 +26,7 @@ Version Information
 project = "KIC.InnoEnergy"
 release = "2.0.1"
 revisionIntef = "dd27f4d"
-revisionLernmodule = "KIC-1"
+revisionLernmodule = "KIC-2"
 
 revision = revisionIntef+"-"+revisionLernmodule
 version = release
