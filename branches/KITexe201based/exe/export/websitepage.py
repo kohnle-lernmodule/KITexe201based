@@ -151,7 +151,7 @@ class WebsitePage(Page):
 
                 html += u"\""
             html += u">"
-            html += escape(self.node.package.title)
+            #html += escape(self.node.package.title)
             html += u"</"+headerTag+">"+lb
         else:
             html += "<"+sectionTag+" id=\"emptyHeader\"></"+sectionTag+">"+lb
@@ -192,6 +192,7 @@ class WebsitePage(Page):
                         block.renderView(self.node.package.style))
                 html += u'</'+articleTag+'>'+lb # iDevice div
 
+        html += "<"+sectionTag+" id=\"lmsubmit\"></"+sectionTag+"><script type=\"text/javascript\" language=\"javascript\">doStart();</script>"+lb
         if not themeHasXML:
             html += "<div id='bottomPagination'>"+lb
             html += self.getNavigationLink(prevPage, nextPage)
@@ -201,7 +202,6 @@ class WebsitePage(Page):
         if not themeHasXML:
         #if not style.hasValidConfig:
             html += self.renderFooter()
-        html += "<"+sectionTag+" id=\"lmsubmit\"></"+sectionTag+"><script type=\"text/javascript\" language=\"javascript\">doStart();</script>"+lb
         html += u"</"+sectionTag+">"+lb # /main
         html += u"</div>"+lb # /main-wrapper
         if themeHasXML:
@@ -214,7 +214,9 @@ class WebsitePage(Page):
         if themeHasXML:
         #if style.hasValidConfig:
             html += style.get_extra_body()        
-        html += u'</body></html>'
+        html += u'</body>'
+        html += u'<script type="text/javascript" src="lernmodule_net_custom.js"></script>'+lb
+        html += u'</html>'
         html = html.encode('utf8')
         # JR: Eliminamos los atributos de las ecuaciones
         aux = re.compile("exe_math_latex=\"[^\"]*\"")

@@ -81,16 +81,18 @@ class SinglePage(Page):
         html += u"</"+headerTag+">"+lb
         html += u"<"+sectionTag+" id=\"main\">"+lb
         html += self.renderNode(package.root, 1)
+        html += u"<"+sectionTag+" id=\"lmsubmit\"></"+sectionTag+"><script type=\"text/javascript\" language=\"javascript\">doStart();</script>"
         html += u"</"+sectionTag+">"+lb
         html += self.renderLicense()+lb
         html += self.renderFooter()+lb
-        html += u"<"+sectionTag+" id=\"lmsubmit\"></"+sectionTag+"><script type=\"text/javascript\" language=\"javascript\">doStart();</script>"
         html += u"</div>"+lb # Close content
         # Some styles might have their own JavaScript files (see their config.xml file)
         style = G.application.config.styleStore.getStyle(self.node.package.style)
         if style.hasValidConfig:
             html += style.get_extra_body()        
-        html += u'</body></html>'
+        html += u'</body>'
+        html += u'<script type="text/javascript" src="lernmodule_net_custom.js"></script>'+lb
+        html += u'</html>'
         
         # JR: Eliminamos los atributos de las ecuaciones
         aux = re.compile("exe_math_latex=\"[^\"]*\"")
