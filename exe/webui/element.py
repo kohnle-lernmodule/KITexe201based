@@ -1414,7 +1414,9 @@ class ClozeElement(ElementWithResources):
             if missingWord:
                 aceptedWords=[]
                 aceptedWords=missingWord.split('|')
-                lenWord=max(len(wrd) for wrd in aceptedWords)
+                # special KIT
+                lenWordtmp=max(len(wrd) for wrd in aceptedWords)
+                lenWord=round(lenWordtmp*0.7)
                 words += "'" + missingWord + "',"
                 # The edit box for the user to type into
                 #'  autocomplete="off"',
@@ -3035,8 +3037,9 @@ class ScormClozeElement(ElementWithResources):
 #added ktlm for fixed width gaps
 #added ktlm 130104 to use fixed length of longest word
                 inputWidth = len (missingWord)
+#special KIT
                 if fixedLength == True:
-                    inputWidth = globalLength
+                    inputWidth = round(globalLength*0.6)
 #END added ktlm 130104 to use fixed length of longest word
                 inputHtml = [
                     ' <input type="text" value="" ',
