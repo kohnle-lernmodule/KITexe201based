@@ -25,12 +25,12 @@ var lm_suspend_data="",
 	suspendArray=new Array(),
 	ai_score=new Array(),
 	ai_poss_score=new Array(),
-	masteryscore = 70,
+	masteryscore = 0,
 	lm_lang = "en",
 	displayTextarea=0;
 
 //add language options
-if (document.getElementsByTagName("html")[0].lang == "de") lm_lang = "de";
+//if (document.getElementsByTagName("html")[0].lang == "de") lm_lang = "de";
 
 var lm_txtvars={
 	"score":{
@@ -519,7 +519,9 @@ function checkAndMarkScormMultiClozeWord(ele) {
 				break;
 			}
 		}
-		if (correct) return origGuess;
+//		if (correct) return origGuess;
+// special KIT
+		if (correct) return original;
 		else return "";
 	}
 
@@ -634,8 +636,9 @@ function ShowScormMultiClozeAnswers(ident){
 
 function ShowScormMultiClozeWord(ele) {
 	var original = getScormMultiClozeAnswer(ele, 0);
-	var answer = original.split('|')[0];
-	ele.value = answer;
+//	var answer = original.split('|')[0];
+//	ele.value = answer;
+	ele.value = original; //special KIT
 	markScormMultiClozeWord(ele,2);
 }
 //END added lernmodule.net 121218  
