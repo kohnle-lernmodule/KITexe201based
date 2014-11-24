@@ -245,12 +245,7 @@ class MainPage(RenderableLivePage):
         return ctx.tag(**attribs)
 
     def render_version(self, ctx, data):
-        return [tags.p()["Version: %s" % release],
-                tags.p()["Revision: ", 
-                         tags.a(href='%s;a=shortlog;h=%s' % (self.config.baseGitWebURL, revision),
-                                target='_blank')[revision]
-                         ]
-                ] 
+        return [tags.p()["Version: %s" % release],tags.p()["Revision: %s" % revision]] 
 
     def handleTestPrintMsg(self, client, message): 
         """ 
